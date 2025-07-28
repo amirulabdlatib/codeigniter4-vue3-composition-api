@@ -21,6 +21,10 @@ class ProductController extends ResourceController
         $model = new Product();
         $data = $model->findAll();
 
+        if (!$data) {
+            return $this->failNotFound('No product data is found.');
+        }
+
         return $this->respond($data);
     }
 
