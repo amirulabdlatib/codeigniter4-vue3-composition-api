@@ -13,7 +13,7 @@ class Product extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'title',
+        'name',
         'description',
         'price',
     ];
