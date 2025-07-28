@@ -14,12 +14,12 @@ class CreateProductTable extends Migration
                 'constraint' => 5,
                 'auto_increment' => true,
                 'null' => false,
+                'unsigned' => true,
             ],
-            'title' => [
+            'name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => false,
-
             ],
             'description' => [
                 'type' => 'TEXT',
@@ -27,7 +27,7 @@ class CreateProductTable extends Migration
             ],
             'price' => [
                 'type' => 'DECIMAL',
-                'constraint' => "10,2",
+                'constraint' => 11,
                 'null' => false
             ],
             'created_at' => [
