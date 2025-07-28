@@ -52,7 +52,7 @@ class ProductController extends ResourceController
      */
     public function create()
     {
-        $json = $this->request->getJson();
+        $json = json_decode($this->request->getBody());
 
         $data = [
             'name' => $json->name,
@@ -75,7 +75,22 @@ class ProductController extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $json = json_decode($this->request->getBody());
+        $model = new Product();
+        $product = $model->find($id);
+
+        $data = [
+            "id" => $id,
+            "name" => $json->name,
+            "description" => $json->description,
+            "price" => $json->price,
+        ];
+
+        if (!$product) return $this->failNotFound('No data product was found');
+
+        if (!$model->save($data)) return $this->fail('Product not updated', 400);
+
+        return $this->respond($data);
     }
 
     /**
