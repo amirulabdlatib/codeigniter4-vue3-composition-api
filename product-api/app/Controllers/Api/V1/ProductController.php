@@ -11,6 +11,13 @@ class ProductController extends ResourceController
 {
     use ResponseTrait;
 
+    protected Product $product;
+
+    public function __construct()
+    {
+        $this->product = new Product();
+    }
+
     /**
      * Return an array of resource objects, themselves in array format.
      *
@@ -18,8 +25,7 @@ class ProductController extends ResourceController
      */
     public function index()
     {
-        $model = new Product();
-        $data = $model->findAll();
+        $data = $this->product->findAll();
 
         if (!$data) {
             return $this->failNotFound('No product data is found.');
@@ -37,8 +43,7 @@ class ProductController extends ResourceController
      */
     public function show($id = null)
     {
-        $model = new Product();
-        $data = $model->find($id);
+        $data = $this->product->find($id);
 
         if (!$data) return $this->failNotFound("No data product is found");
 
@@ -60,9 +65,7 @@ class ProductController extends ResourceController
             'price' => $json->price,
         ];
 
-        $model = new Product();
-
-        if (!$model->save($data)) return $this->fail('Product data not created', 400);
+        if (!$this->product->save($data)) return $this->fail('Product data not created', 400);
         return $this->respondCreated($data);
     }
 
@@ -76,8 +79,7 @@ class ProductController extends ResourceController
     public function update($id = null)
     {
         $json = json_decode($this->request->getBody());
-        $model = new Product();
-        $product = $model->find($id);
+        $product = $this->product->find($id);
 
         $data = [
             "id" => $id,
@@ -88,7 +90,7 @@ class ProductController extends ResourceController
 
         if (!$product) return $this->failNotFound('No data product was found');
 
-        if (!$model->save($data)) return $this->fail('Product not updated', 400);
+        if (!$this->product->save($data)) return $this->fail('Product not updated', 400);
 
         return $this->respondUpdated($data);
     }
@@ -102,11 +104,9 @@ class ProductController extends ResourceController
      */
     public function delete($id = null)
     {
-        $model = new Product();
+        if (!$this->product->find($id)) return $this->failNotFound('Product not found');
 
-        if (!$model->find($id)) return $this->failNotFound('Product not found');
-
-        if (!$model->delete($id)) return $this->fail("Product not successfully deleted", 400);
+        if (!$this->product->delete($id)) return $this->fail("Product not successfully deleted", 400);
 
         return $this->respondDeleted("Product has been deleted.");
     }
