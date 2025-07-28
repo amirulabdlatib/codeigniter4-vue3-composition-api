@@ -2,12 +2,14 @@
 
 namespace App\Controllers\Api\V1;
 
+use App\Models\Product;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 
 class ProductController extends ResourceController
 {
+    use ResponseTrait;
 
     /**
      * Return an array of resource objects, themselves in array format.
@@ -16,7 +18,10 @@ class ProductController extends ResourceController
      */
     public function index()
     {
-        //
+        $model = new Product();
+        $data = $model->findAll();
+
+        return $this->respond($data);
     }
 
     /**

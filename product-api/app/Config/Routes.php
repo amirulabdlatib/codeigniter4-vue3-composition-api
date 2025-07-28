@@ -9,7 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 $routes->group("api", function ($routes) {
-    $routes->group("v1", ["namespace" => "App\Controllers\Api\V1",], function ($routes) {
-        $routes->resource('products', ['controller' => ProductController::class]);
+    $routes->group("v1", ['namespace' => 'App\Controllers\Api\V1'], function ($routes) {
+        $routes->resource('products', ['controller' => 'ProductController']);
     });
 });
