@@ -17,7 +17,7 @@ class CreateProductTable extends Migration
             ],
             'title' => [
                 'type' => 'VARCHAR',
-                'constraint' => 256,
+                'constraint' => 255,
                 'null' => false,
 
             ],
