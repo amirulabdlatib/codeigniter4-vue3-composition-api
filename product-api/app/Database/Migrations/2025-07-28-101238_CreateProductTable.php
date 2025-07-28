@@ -26,7 +26,7 @@ class CreateProductTable extends Migration
                 'null' => false,
             ],
             'price' => [
-                'type' => 'DECIMAL',
+                'type' => 'INT',
                 'constraint' => 11,
                 'null' => false
             ],
