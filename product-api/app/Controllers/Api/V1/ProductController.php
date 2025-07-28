@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Api\V1;
 
+use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\RESTful\ResourceController;
 
 class ProductController extends ResourceController
 {
+
     /**
      * Return an array of resource objects, themselves in array format.
      *
