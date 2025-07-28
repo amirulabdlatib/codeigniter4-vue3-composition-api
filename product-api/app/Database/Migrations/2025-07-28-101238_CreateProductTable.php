@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreatePoductTable extends Migration
+class CreateProductTable extends Migration
 {
     public function up()
     {
@@ -27,7 +27,7 @@ class CreatePoductTable extends Migration
             ],
             'price' => [
                 'type' => 'DECIMAL',
-                'constraint' => "10.2",
+                'constraint' => "10,2",
                 'null' => false
             ],
             'created_at' => [
