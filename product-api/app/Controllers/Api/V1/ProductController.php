@@ -90,7 +90,7 @@ class ProductController extends ResourceController
 
         if (!$model->save($data)) return $this->fail('Product not updated', 400);
 
-        return $this->respond($data);
+        return $this->respondUpdated($data);
     }
 
     /**
@@ -102,6 +102,12 @@ class ProductController extends ResourceController
      */
     public function delete($id = null)
     {
-        //
+        $model = new Product();
+
+        if (!$model->find($id)) return $this->failNotFound('Product not found');
+
+        if (!$model->delete($id)) return $this->fail("Product not successfully deleted", 400);
+
+        return $this->respondDeleted("Product has been deleted.");
     }
 }
