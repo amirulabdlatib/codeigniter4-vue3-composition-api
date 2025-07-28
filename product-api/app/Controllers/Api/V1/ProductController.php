@@ -52,7 +52,18 @@ class ProductController extends ResourceController
      */
     public function create()
     {
-        //
+        $json = $this->request->getJson();
+
+        $data = [
+            'name' => $json->name,
+            'description' => $json->description,
+            'price' => $json->price,
+        ];
+
+        $model = new Product();
+
+        if (!$model->save($data)) return $this->fail('Product data not created', 400);
+        return $this->respondCreated($data);
     }
 
     /**
