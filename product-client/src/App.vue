@@ -22,6 +22,7 @@ const toggleMenu = () => {
         <nav class="hidden md:flex space-x-8">
           <RouterLink to="/" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200"> Home </RouterLink>
           <RouterLink to="/test" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200"> Test </RouterLink>
+          <RouterLink to="/products" class="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200"> Product </RouterLink>
         </nav>
 
         <!-- Mobile menu button -->
@@ -40,6 +41,7 @@ const toggleMenu = () => {
         <nav class="px-2 pt-2 pb-3 space-y-1 border-t border-gray-700">
           <RouterLink to="/" @click="toggleMenu" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md text-base font-medium transition-colors duration-200"> Home </RouterLink>
           <RouterLink to="/test" @click="toggleMenu" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md text-base font-medium transition-colors duration-200"> Test </RouterLink>
+          <RouterLink to="/products" @click="toggleMenu" class="block px-3 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-md text-base font-medium transition-colors duration-200"> Product </RouterLink>
         </nav>
       </div>
     </div>
